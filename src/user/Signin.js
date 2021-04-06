@@ -25,27 +25,27 @@ const Signin = () => {
     setValues({...values, error: false, loading:true})
     signin({email,password})
     .then(data => {
-      if(data?.error){
-        setValues({...values, error:data?.error, loading:false})
+      if(data.error){
+        setValues({...values, error:data.error, loading:false})
       } else {
         Authenticate(data, () => {
           setValues({...values, didRedirect:true })
         })
       }
     })
-    .catch(console.log("signin request failed"))
+    .catch( err => {console.log(err)})  //"signin request failed" + 
   }
   
   const performRedirect = () => {
     if(didRedirect){
       if(user && user.role === 1){
-        return <Redirect to="/admin"/>;   // <p>redirect to Admin</p>;
+        return <Redirect to="/admin/dashboard"/>;   // <p>redirect to Admin</p>;
       } else {
-        return <Redirect to="/admin/dashboard"/>;//<p>redirect to User Dash board</p>;
+        return <Redirect to="/user/dashboard"/>;//<p>redirect to User Dash board</p>;
       }
     }
     if(Authenticate()){
-      return <Redirect to="/" />
+      return <Redirect to="/" />;
     }
   }
 

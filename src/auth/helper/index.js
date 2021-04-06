@@ -10,9 +10,9 @@ export const signup = (user) => {
         body: JSON.stringify(user)
     })
     .then(response => {
-        return response.json();  //response.json()
+         return response.json();  //response.json()
     })
-    .catch(err => console.log(err))
+    .catch(err => {console.log(err)})
 }
 
 export const signin = (user) => {
@@ -27,7 +27,7 @@ export const signin = (user) => {
     .then(response => { 
         return response.json()
     })
-    .catch(err => console.log(err))
+    .catch(err => {console.log(err)})
 }
 
 export const Authenticate = (data,next) => {
@@ -46,7 +46,7 @@ export const signout = (next) => {
             method:"GET"
         })
         .then(response => console.log('sign out success'))
-        .catch(err => console.log(err))
+        .catch(err => {console.log(err)})
     }
 }
 

@@ -12,20 +12,22 @@ const Signup = () => {
     error: "",
     success: false
   })
+  
 
   const {name, email, password, error, success} = values;
 
   const handelChange = name => event => {
-    setValues({ ...values, error:false, [name]: event.target.value });
+    setValues({ ...values, error:false, [name]:event.target.value });
   }
   
   const onSubmit = (event) => {
-    event.preventDefault()
+    event.preventDefault();
     setValues({ ...values, error: false })
     signup({name, email, password})
-    .then(data => {
-      if(data?.error){
-        setValues({ ...values, error: data?.error, success:false})
+    .then((data) => {
+      
+      if(data.error){
+        setValues({ ...values, error:data.error, success:false})
       } else {
         setValues({
           ...values,
@@ -37,7 +39,7 @@ const Signup = () => {
         });
       }
     })
-    .catch(console.log("Error in signup") )
+    .catch(err => console.log(err))
   }
   
 
@@ -86,7 +88,7 @@ const Signup = () => {
         <div className="col-md-6 offset-sm-3 text-left">
           <div className='alert alert-danger'
               style={{ display: error ? "" : "none" }} >
-            {error} 
+            {` ERROR : ${error}`} 
           </div>
         </div>
       </div>
@@ -98,7 +100,7 @@ const Signup = () => {
       {successMessage()}
       {errorMessage()}
       {signUpForm()}
-      {/* <p className='text-white text-center'>{JSON.stringify(values)}</p> */}
+      <p className='text-white text-center'>{JSON.stringify(values)}</p>
     </Base>
   );
 };
