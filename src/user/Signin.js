@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Base from "../core/Base";
-import { Link, Redirect } from "react-router-dom";
-import { Authenticate, isAuthenticated, signin } from "../auth/helper";
+import { Redirect } from "react-router-dom";
+import { authenticate, isAuthenticated, signin } from "../auth/helper";
 
 const Signin = () => {
 
@@ -28,7 +28,7 @@ const Signin = () => {
       if(data.error){
         setValues({...values, error:data.error, loading:false})
       } else {
-        Authenticate(data, () => {
+        authenticate(data, () => {
           setValues({...values, didRedirect:true })
         })
       }
@@ -44,7 +44,7 @@ const Signin = () => {
         return <Redirect to="/user/dashboard"/>;//<p>redirect to User Dash board</p>;
       }
     }
-    if(Authenticate()){
+    if(isAuthenticated()){
       return <Redirect to="/" />;
     }
   }

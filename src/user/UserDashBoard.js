@@ -1,10 +1,11 @@
 import React from 'react'
+import Base from '../core/Base'
 
 const UserDashBoard = () => {
     return (
-        <div>
-            <h1>user page</h1>
-        </div>
+        <Base title="UserDashBoard page">
+          <h1>THis is UserDashBoard page</h1>
+        </Base>
     )
 }
 
