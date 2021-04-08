@@ -33,15 +33,15 @@ const Signin = () => {
         })
       }
     })
-    .catch( err => {console.log(err)})  //"signin request failed" + 
+    .catch( err => {console.log(err)})  
   }
   
   const performRedirect = () => {
     if(didRedirect){
       if(user && user.role === 1){
-        return <Redirect to="/admin/dashboard"/>;   // <p>redirect to Admin</p>;
+        return <Redirect to="/admin/dashboard"/>;  
       } else {
-        return <Redirect to="/user/dashboard"/>;//<p>redirect to User Dash board</p>;
+        return <Redirect to="/user/dashboard"/>;
       }
     }
     if(isAuthenticated()){

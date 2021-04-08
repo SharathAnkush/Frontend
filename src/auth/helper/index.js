@@ -10,7 +10,7 @@ export const signup = (user) => {
         body: JSON.stringify(user)
     })
     .then(response => {
-         return response.json();  //response.json()
+         return response.json();
     })
     .catch(err => {console.log(err)})
 }
